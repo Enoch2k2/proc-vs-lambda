@@ -36,7 +36,11 @@ RSpec.describe 'Lambda' do
 
   describe '#divide_by' do
     it 'should accept lambda object as an argument' do
-      expect{divide_by(lambda{|x| x / 5})}.to_not raise_error(ArgumentError) 
+      expect{divide_by(lambda{|x| x / 5})}.not_to raise_error(ArgumentError)
+    end
+
+    it 'should return the lambda object call passing in 10' do
+      expect(divide_by(lambda{|x| x / 5})).to eq(2)
     end
   end
 end
